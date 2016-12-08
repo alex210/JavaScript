@@ -1,0 +1,21 @@
+<script>
+  var arr = [];
+  var str;
+  for(var i = 0; i < 5; i++) {
+    arr[i] = prompt('Введите имя №' + (i+1) + ':');
+    if(arr[i] === null) {
+      alert('Ошибка!');
+      break;}
+      if(i == 4) {
+        str = prompt('Введите имя пользователя:');
+        for(var j = 0; j < 5; j++) {
+          if(str == arr[j] && str != '') {
+            alert(str + ', Вы успешно вошли');
+            break;
+          } else {
+            if(j == 4) alert('Ошибка!');
+          }
+        }
+      }
+    }
+</script>
