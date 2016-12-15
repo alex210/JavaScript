@@ -1,88 +1,129 @@
-var question = {
-  name: 'Тест по программированию',
-  question0: {
-    ask: '1. Вопрос №1',
-    answer1: 'Вариант ответа №1',
-    answer2: 'Вариант ответа №2',
-    answer3: 'Вариант ответа №3',
-    trueAnswer: 'Вариант ответа №1'
-  },
-  question1: {
-    ask: '2. Вопрос №2',
-    answer1: 'Вариант ответа №1',
-    answer2: 'Вариант ответа №2',
-    answer3: 'Вариант ответа №3',
-    trueAnswer: 'Вариант ответа №2'
-  },
-  question2: {
-    ask: '3. Вопрос №3',
-    answer1: 'Вариант ответа №1',
-    answer2: 'Вариант ответа №2',
-    answer3: 'Вариант ответа №3',
-    trueAnswer: 'Вариант ответа №3'
-  },
-  button: 'Проверить мои результаты'
-};
+var msek = 0;
+var sek = 0;
+var min = 0;
+var hr = 0;
+var msI;
+var sI;
+var mI;
+var hI;
 
-// Создаёт заголовок теста:
-function header(obj, place) {
-  var h1 = document.createElement('h1');
-  h1.innerHTML = obj.name;
-  h1.className = 'text-center';
-  place.appendChild(h1);
-}
-
-// Создаёт вопрос:
-function makeQuestion(obj, numberQuestion, place) {
-  var h2 = document.createElement('h2');
-  h2.innerHTML = obj[numberQuestion].ask;
-  place.appendChild(h2);
-}
-
-// Считает количество и создаёт ответы:
-function answer(obj, numberQuestion, place) {
-  for(var key in obj[numberQuestion]){
-    var str = key[0] + key[1] + key[2] + key[3] + key[4] + key[5];
-    if(str == 'answer') {
-      var div = document.createElement('div');
-      div.innerHTML = '<label> <input type="radio" name=' + numberQuestion + ' value=' + key + '>' + obj[numberQuestion][key] + '</label>';
-      place.appendChild(div);
-    }
+// Считает милисекунды:
+function ms() {
+  msek++;
+  if(msek > 999) {
+    msek = 0;
   }
+  if(msek < 10) {
+    msek = '00' + msek;
+  } else if(msek < 100) {
+    msek = '0' + msek;
+  } else {
+    msek = msek;
+  };
+  var millisecond = document.getElementById('millisecond');
+    millisecond.innerHTML = msek;
+  };
+
+//  Считает секунды:
+  function s() {
+    sek++;
+    if(sek > 59) {
+      sek = 0;
+    }
+    if(sek < 10) {
+      sek = '0' + sek;
+    };
+    var second = document.getElementById('second');
+    second.innerHTML = sek;
+  };
+
+// Считает минуты:
+  function m() {
+    min++;
+    if(min > 59) {
+      min = 0;
+    }
+    if(min < 10) {
+      min = '0' + min;
+    };
+    var minutes = document.getElementById('minutes');
+    minutes.innerHTML = min;
+  };
+
+// Считает часы:
+  function h() {
+    hr++;
+    var hour = document.getElementById('hour');
+    hour.innerHTML = hr;
+  };
+
+// Запускает таймер:
+function timer() {
+   msI = setInterval(ms, 1);
+   sI = setInterval(s, 1000);
+   mI = setInterval(m, 60000);
+   hI = setInterval(h, 3600000);
+   start.innerHTML = 'pause';
+   k++;
 }
 
-// Считает количество вопросов:
-function variants(obj, place) {
-  var str = 'question';
-  var numberQuestion;
-  for(var i = 0; true; i++) {
-    if (str + i in obj) {
-      numberQuestion = str + i;
+// Делает паузу:
+function timeout() {
+    clearInterval(msI);
+    clearInterval(sI);
+    clearInterval(mI);
+    clearInterval(hI);
+    start.innerHTML = 'start';
+    k++;
+  }
+
+// Кнопка START/PAUSE:
+  var k = 0;
+  var start = document.getElementById('start');
+  start.onclick = function() {
+    if(k % 2 == 0) {
+      timer();
     } else {
-      break;
+      timeout();
+      scrin();
     }
-    makeQuestion(obj, numberQuestion, place);
-    answer(obj, numberQuestion, place);
+}
+
+// Обнуляет время:
+var container = document.getElementById('container');
+  function res() {
+    msek = 0;
+    sek = 0;
+    min = 0;
+    hr = 0;
+    millisecond.innerHTML = '000';
+    second.innerHTML = '00';
+    minutes.innerHTML = '00';
+    hour.innerHTML = '00';
+    k = 1;
+    j = 0;
+    container.remove();
+    container = document.createElement('div');
+    var body = document.body;
+    body.appendChild(container);
+    timeout();
   }
-}
 
-// Создаёт кнопку:
-function button(place) {
-  var button = document.createElement('button');
-  button.type = 'submit';
-  button.className = 'btn btn-success btn-lg center-block';
-  button.innerHTML = 'Проверить мои результаты';
-  place.appendChild(button);
-}
+//  Кнопка RESET:
+  var reset = document.getElementById('reset');
+  reset.onclick = res;
 
-// Создаёт форму:
-function form() {
-  var form = document.createElement('form');
-  body = document.body;
-  body.appendChild(form);
-  header(question, form);
-  variants(question, form);
-  button(form);
-}
+// Делает скрин:
+  var text;
+  var j=0;
+  function scrin() {
+    j++;
+    text = document.createElement('p');
+    text.className = ('scrin');
+    text.innerHTML = j + ' Split: ' + hour.innerHTML + ':' + minutes.innerHTML + ':' + second.innerHTML + '.' + millisecond.innerHTML;
+    container.appendChild(text);
+  }
 
-form();
+  // Кнопка SPLIT:
+  var split = document.getElementById('split');
+  split.onclick = scrin;
