@@ -2,46 +2,73 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>TIMER</title>
+    <title>Work 7-8</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet">
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
   </head>
   <body>
-
-    <div class="wrapper">
-
-      <p class="display">
-        <span id="hour">00</span><!--
-        -->:<!--
-        --><span id="minutes">00</span><!--
-        -->:<!--
-        --><span id="second">00</span><!--
-        -->.<!--
-        --><span id="millisecond">000</span>
-      </p>
-
-<div class="buttons">
-
-      <div id="start" class="button">
-        <p>start</p>
+    <div id="container">
+      <div id="tabs">
+        <h2 id="text">htlm</h2>
+        <h2 id="style">css</h2>
+        <h2 id="script">js</h2>
       </div>
-
-      <div id="split" class="button">
-        <p>split</p>
+      <div id="forText">
+      <div id="html">
+        <p class="one">HTML (от англ. HyperText Markup Language — «язык гипертекстовой разметки») — стандартизированный язык разметки
+          документов во Всемирной паутине. Большинство веб-страниц содержат описание разметки на языке HTML (или XHTML).
+          Язык HTML интерпретируется браузерами; полученный в результате интерпретации форматированный текст отображается
+          на экране монитора компьютера или мобильного устройства.
+          Язык HTML является приложением SGML (стандартного обобщённого языка разметки) и соответствует международному стандарту ISO 8879.
+          Язык XHTML является более строгим вариантом HTML, он следует всем ограничениям XML и, фактически, XHTML можно
+          воспринимать как приложение языка XML к области разметки гипертекста.
+          Во всемирной паутине HTML-страницы, как правило, передаются браузерам от сервера по протоколам HTTP или HTTPS,
+          в виде простого текста или с использованием шифрования.
+        </p>
       </div>
-
-      <div id="reset" class="button">
-        <p>reset</p>
+      <div id="css">
+        <p class="two">CSS (англ. Cascading Style Sheets — каскадные таблицы стилей) — формальный язык описания внешнего вида
+          документа, написанного с использованием языка разметки. Преимущественно используется как средство описания,
+          оформления внешнего вида веб-страниц, написанных с помощью языков разметки HTML и XHTML, но может также
+          применяться к любым XML-документам, например, к SVG или XUL.</p>
       </div>
-
+      <div id="js">
+        <p class="three">JavaScript — прототипно-ориентированный сценарный язык программирования. Является реализацией
+          языка ECMAScript(стандарт ECMA-262). JavaScript обычно используется как встраиваемый язык для
+          программного доступа к объектам приложений. Наиболее широкое применение находит в браузерах как
+          язык сценариев для придания интерактивности веб-страницам. Основные архитектурные черты:
+          динамическая типизация, слабая типизация, автоматическое управление памятью, прототипное
+          программирование, функции как объекты первого класса. На JavaScript оказали влияние многие языки,
+          при разработке была цель сделать язык похожим на Java, но при этом лёгким для использования непрограммистами.
+          Языком JavaScript не владеет какая-либо компания или организация, что отличает его от ряда языков программирования,
+          используемых в веб-разработке. Название «JavaScript» является зарегистрированным товарным знаком компании Oracle Corporation.</p>
+      </div>
+    </div>
     </div>
 
+<form action="index.html" method="post">
+<div class="main">
+
+  <div class="name">
+    <p>Firstname</p>
+    <p>Lastname</p>
+    <p>Address</p>
+  </div>
+  <div class="input">
+    <input class="firstname" type="text" name="firstname">
+    <input class="lastname" type="text" name="lastname">
+    <input class="address" type="text" name="address">
+  </div>
 </div>
+  <div class="inputHelp">
+    <p class="firstnameHelp">Please provide your firstname.</p>
+    <p class="lastnameHelp">Please provide also your lastname.</p>
+    <p class="addressHelp">Your home or work address.</p>
+  </div>
+  <div class="clear">
+  <button type="button" name="button">Show help</button>
+</form>
 
-<div id="container">
-
-</div>
-
-    <script type="text/javascript" src="script.js"></script>
   </body>
 </html>
